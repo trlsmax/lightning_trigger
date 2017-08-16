@@ -1,0 +1,227 @@
+Cmp-Mod V01 Created by Cvpcb (2015-05-23 BZR 5679)-product   date = 2015/5/24 星期日 下午 9:08:19
+
+BeginCmp
+TimeStamp = /55621849;
+Reference = BT1;
+ValeurCmp = Battery;
+IdModule  = Pin_Headers:Pin_Header_Straight_2x01;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617498;
+Reference = C1;
+ValeurCmp = 100n;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617452;
+Reference = C2;
+ValeurCmp = 47n;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /556173BF;
+Reference = C3;
+ValeurCmp = 47n;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561A618;
+Reference = C4;
+ValeurCmp = 1u;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55620C4A;
+Reference = C5;
+ValeurCmp = 1u;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55625661;
+Reference = C6;
+ValeurCmp = 1u;
+IdModule  = Capacitors_SMD:C_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561D938;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LEDs:LED-3MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561FFA4;
+Reference = D2;
+ValeurCmp = CHARGE;
+IdModule  = LEDs:LED-3MM;
+EndCmp
+
+BeginCmp
+TimeStamp = /55621D7B;
+Reference = D3;
+ValeurCmp = D_Schottky_x2_KCom_KAA;
+IdModule  = Housings_SOT-23_SOT-143_TSOT-6:SOT-23;
+EndCmp
+
+BeginCmp
+TimeStamp = /55619A19;
+Reference = IC1;
+ValeurCmp = STM8S103F3P6;
+IdModule  = Housings_SSOP:TSSOP-20_4.4x6.5mm_Pitch0.65mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561DEF1;
+Reference = J1;
+ValeurCmp = Shutter;
+IdModule  = Connect:JACK_ALIM;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561EA54;
+Reference = P1;
+ValeurCmp = USB_OTG;
+IdModule  = Connect:USB_Mini-B;
+EndCmp
+
+BeginCmp
+TimeStamp = /55621B53;
+Reference = Q1;
+ValeurCmp = Q_PMOS_GDS;
+IdModule  = Transistors_SMD:sc70;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617383;
+Reference = R1;
+ValeurCmp = 2.2k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617338;
+Reference = R2;
+ValeurCmp = 47k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561727B;
+Reference = R3;
+ValeurCmp = 2.2k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617315;
+Reference = R4;
+ValeurCmp = 27k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561DD53;
+Reference = R5;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561DA2F;
+Reference = R6;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561D31F;
+Reference = R7;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561FC56;
+Reference = R8;
+ValeurCmp = 1k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55621727;
+Reference = R9;
+ValeurCmp = 2.2k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /55621C3E;
+Reference = R10;
+ValeurCmp = 100k;
+IdModule  = Resistors_SMD:R_0603;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561D2A4;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = Buttons_Switches_ThroughHole:SW_PUSH;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561EE9F;
+Reference = T1;
+ValeurCmp = SWIM;
+IdModule  = Measurement_Points:Measurement_Point_Round-SMD-Pad_Small;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561EE3F;
+Reference = T2;
+ValeurCmp = NRST;
+IdModule  = Measurement_Points:Measurement_Point_Round-SMD-Pad_Small;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561714C;
+Reference = U1;
+ValeurCmp = OPT101;
+IdModule  = Housings_DIP:DIP-8__300_ELL;
+EndCmp
+
+BeginCmp
+TimeStamp = /55617204;
+Reference = U2;
+ValeurCmp = LM358;
+IdModule  = Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561DCEA;
+Reference = U3;
+ValeurCmp = PC817;
+IdModule  = Opto-Devices:Optocoupler_SMD_HandSoldering_KPC357_LTV35x_PC357_SingleChannel;
+EndCmp
+
+BeginCmp
+TimeStamp = /5561F98F;
+Reference = U4;
+ValeurCmp = LTC4054;
+IdModule  = Housings_SOT-23_SOT-143_TSOT-6:SOT-23-5;
+EndCmp
+
+BeginCmp
+TimeStamp = /5562527B;
+Reference = U5;
+ValeurCmp = NCP1117ST33T3G;
+IdModule  = Housings_SOT-23_SOT-143_TSOT-6:SOT-23;
+EndCmp
+
+EndListe
