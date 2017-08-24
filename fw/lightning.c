@@ -7,7 +7,16 @@
 
 //#define DEBUG_ENABLE
 
+/* mirror lockup will stop when there is no 
+ * shutter trigger in 25 seconds on Canon 350D
+ * */
+#define MIRROR_LOCKUP_AUTO_RESTART
+
 #define BG_INTERVAL 5000           // get background light level every BG_INTERVAL sec
+
+#ifdef MIRROR_LOCKUP_AUTO_RESTART
+#define MIRROR_TIMEOUT 25000
+#endif
 
 #ifdef STM8S105                 // config for STM8S-DISCOVERY board
 #define CH_BACKGROUND 4
@@ -36,8 +45,14 @@
 #endif
 
 volatile bool lightning_trg = FALSE;
+bool mirror_lockup_enable = FALSE;
 uint16_t *buf_ptr;
 volatile uint16_t time_cnt = 0;
+
+#ifdef MIRROR_LOCKUP_AUTO_RESTART
+volatile bool do_mirror_lockup = FALSE;
+volatile uint16_t mirror_cnt = 0;
+#endif
 
 void delay_ms(uint16_t t)
 {
@@ -131,7 +146,10 @@ void main(void)
     enableInterrupts();
     delay_ms(1000);
 
-    if ((ML_PORT->IDR & ML_PIN) == 0) {
+    // read mirror lockup switch
+    mirror_lockup_enable = ((ML_PORT->IDR & ML_PIN) == 0);
+
+    if (mirror_lockup_enable) {
         //mirror lockup enable
         SHUTTER_PORT->ODR |= SHUTTER_PIN;
         delay_ms(100);
@@ -149,13 +167,17 @@ void main(void)
             delay_ms(100);
             SHUTTER_PORT->ODR &= ~SHUTTER_PIN;
 
-            if ((ML_PORT->IDR & ML_PIN) == 0) {
+            if (mirror_lockup_enable) {
                 // here, shutter duration should less than 2000 ms
                 delay_ms(2000);
                 //mirror lockup enable
                 SHUTTER_PORT->ODR |= SHUTTER_PIN;
                 delay_ms(100);
                 SHUTTER_PORT->ODR &= ~SHUTTER_PIN;
+#ifdef MIRROR_LOCKUP_AUTO_RESTART
+                //reset mirror timeout counter
+                mirror_cnt = MIRROR_TIMEOUT;
+#endif
             }
 
             lightning_trg = FALSE;
@@ -169,6 +191,18 @@ void main(void)
         if (bg_flag) {
             bg_flag = FALSE;
             printf("background = %d\n\r", tmp);
+        }
+#endif
+
+#ifdef MIRROR_LOCKUP_AUTO_RESTART
+        if (mirror_lockup_enable && do_mirror_lockup) {
+            do_mirror_lockup = FALSE;
+            //mirror lockup enable
+            SHUTTER_PORT->ODR |= SHUTTER_PIN;
+            delay_ms(100);
+            SHUTTER_PORT->ODR &= ~SHUTTER_PIN;
+            //reset mirror timeout counter
+            mirror_cnt = MIRROR_TIMEOUT;
         }
 #endif
     } while(1);
@@ -188,6 +222,13 @@ void tim1_update(void) __interrupt(ISR_TIM1_OVF)
 
     if (time_cnt > 0)
         time_cnt--;
+
+#ifdef MIRROR_LOCKUP_AUTO_RESTART
+    if (mirror_cnt > 0) {
+        if (--mirror_cnt == 0)
+            do_mirror_lockup = TRUE;
+    }
+#endif
 
     if (sec++ > BG_INTERVAL) {
         sec = 0;
