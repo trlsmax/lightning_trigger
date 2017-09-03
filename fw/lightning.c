@@ -15,7 +15,7 @@
 #define BG_INTERVAL 5000           // get background light level every BG_INTERVAL sec
 
 #ifdef MIRROR_LOCKUP_AUTO_RESTART
-#define MIRROR_TIMEOUT 25000
+#define MIRROR_TIMEOUT 30500
 #endif
 
 #ifdef STM8S105                 // config for STM8S-DISCOVERY board
