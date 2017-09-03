@@ -13,6 +13,7 @@
 #define MIRROR_LOCKUP_AUTO_RESTART
 
 #define BG_INTERVAL 5000           // get background light level every BG_INTERVAL sec
+#define TRIGGER_OFFSET 5
 
 #ifdef MIRROR_LOCKUP_AUTO_RESTART
 #define MIRROR_TIMEOUT 30500
@@ -288,10 +289,10 @@ void adc(void) __interrupt(ISR_ADC1)
          * everage 8 sample to be the background light level
          **************************************************/
         sum = 0;
-        for(i = 0; i < 8; i++)
-            sum += buf_ptr[i];
-        sum >>= 3;
-        sum += 5;
+        for(i = 0; i < 10; i++)
+            if (sum < buf_ptr[i])
+                sum = buf_ptr[i];
+        sum += TRIGGER_OFFSET;
 
 #ifdef DEBUG_ENABLE
         tmp = sum;                                      //store everage value for print
